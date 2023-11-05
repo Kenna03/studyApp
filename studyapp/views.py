@@ -4,6 +4,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from .form import AssignmentForm
 
+
 # Create your views here.
 @login_required()
 def index(request):
@@ -12,7 +13,7 @@ def index(request):
     return render(request, 'index.html', {'assignments': assignments, 'form': form})
 
 @login_required
-@require_POST  # Ensure that only POST requests can access this view
+@require_POST
 def create_assignment(request):
     form = AssignmentForm(request.POST)
     print('preparing to save')
