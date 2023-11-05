@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment Manager</title>
+</head>
+<h1>My Assignments</h1>
+<body>
+    {% for assignment in assignments %}
+        <li>
+            {{ assignment.title }}
+            {{  assignment.course }}
+            {{  assignment.dueDate }}
+        </li>
+    {% endfor %}
+</body>
+</html>
