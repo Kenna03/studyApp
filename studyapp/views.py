@@ -10,7 +10,7 @@ from .form import AssignmentForm
 def index(request):
     assignments = Assignment.objects.filter(user=request.user)
     form = AssignmentForm()
-    return render(request, 'index.html', {'assignments': assignments, 'form': form})
+    return render(request, 'index.html', {'form': form, 'assignments': assignments})
 
 @login_required
 @require_POST

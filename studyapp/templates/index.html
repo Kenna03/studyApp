@@ -18,12 +18,12 @@
     </form>
 {% endif %}
 
-<h2>List of tasks:</h2>
+<h2>List of Assignments:</h2>
 {% for assignment in assignments %}
     <hr>
         <h3>
         {% if assignment.completed %}
-            <s>{{ task.description }}</s>
+            <s>{{ assignment.description }}</s>
         {% else %}
             {{ assignment.description }}
         {% endif %}
