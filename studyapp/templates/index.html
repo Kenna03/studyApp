@@ -6,12 +6,39 @@
 </head>
 <h1>My Assignments</h1>
 <body>
-    {% for assignment in assignments %}
-        <li>
-            {{ assignment.title }}
-            {{  assignment.course }}
-            {{  assignment.dueDate }}
-        </li>
-    {% endfor %}
+   {% if user.is_authenticated %}
+    Welcome, {{ user.username }}!
+{% else %}
+    Welcome, Guest!
+{% endif %}
+{% if user.is_authenticated %}
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Sign Out">
+    </form>
+{% endif %}
+
+<h2>List of tasks:</h2>
+{% for assignment in assignments %}
+    <hr>
+        <h3>
+        {% if assignment.completed %}
+            <s>{{ task.description }}</s>
+        {% else %}
+            {{ assignment.description }}
+        {% endif %}
+        </h3>
+        <div>Due: {{assignment.dueDate}}</div>
+        {% if assignmnet.due_now %}
+        Due soon! Get it done!
+        {% endif %}
+{% endfor %}
+<hr>
+
+<form method="post" action="{% url 'create_task' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Task</button>
+</form>
 </body>
 </html>
