@@ -17,7 +17,11 @@
         <input type="submit" value="Sign Out">
     </form>
 {% endif %}
-
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Assignment Manager</a>
+        <a href="details/">Details</a>
+        <a href="collaboration/">Collaboration</a>
+    </nav>
 <h2>List of Assignments:</h2>
 {% for assignment in assignments %}
     <hr>
