@@ -5,14 +5,13 @@
     <title>Details</title>
 </head>
 <body>
-x <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">Assignment Manager</a>
-        <a href="details/">Details</a>
         <a href="collaboration/">Collaboration</a>
     </nav>
-    <h1>My Assignment Details</h1>
-    <p> {{ assignment.description }}</p>
-    <p>{{ assignment.dueDate }}</p>
+    <h1>{{ myassignment.course }} {{ myassignment.title }}</h1>
+    <p> {{ myassignment.description }}</p>
+    <p>Due: {{ myassignment.dueDate }}</p>
     <h2>Assignment files</h2>
     <p></p>
 </body>

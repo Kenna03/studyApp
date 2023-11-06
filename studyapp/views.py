@@ -1,8 +1,10 @@
-from .models import Assignment
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from .form import AssignmentForm
+from django.http import HttpResponse
+from django.template import loader
+from .models import Assignment
 
 
 # Create your views here.
@@ -26,7 +28,25 @@ def create_assignment(request):
     return redirect('index')
 
 
-def details(request):
+def assignment_s(request):
+    myassignments = Assignment.objects.all().values()
+    template = loader.get_template('all_assignments.html')
+    context = {
+        'myassignments': myassignments,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def details(request, id):
+    myassignment = Assignment.objects.get(id=id)
+    template = loader.get_template('details.html')
+    context = {
+        'myassignment': myassignment,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def details1(request):
     return render(request, "details.html")
 
 
