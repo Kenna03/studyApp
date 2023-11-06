@@ -24,3 +24,11 @@ def create_assignment(request):
         assignment.save()
         print('saved')
     return redirect('index')
+
+
+def details(request):
+    return render(request, "details.html")
+
+
+def collaboration(request):
+    return render(request, "collaboration.html")
