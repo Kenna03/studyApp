@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Assignment Details</title>
+    <title>Details</title>
 </head>
 <body>
-<h1> {{ assignment.course }} {{ assignment.title }}</h1>
-<p> Description: {{ assignment.description }}</p>
-<p> Due: {{ assignment.dueDate }}</p>
-<p> Files: {{ assignment.description }}</p>
-
-<p>Back to <a herf="/">All Assignments</a></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Assignment Manager</a>
+        <a href="collaboration/">Collaboration</a>
+</nav>
+<h1>{{ myassignment.course }} {{ myassignment.title }}</h1>
+<p> {{ myassignment.description }}</p>
+<p>Due: {{ myassignment.dueDate }}</p>
 </body>
 </html>

@@ -12,3 +12,7 @@ class Assignment(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Document(models.Model):
+    doc_file = models.FileField(upload_to='documents/%Y/%m/%d')
