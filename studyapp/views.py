@@ -5,13 +5,7 @@ from .form import AssignmentForm
 from django.http import HttpResponse
 from django.template import loader
 from .models import Assignment
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
 
-from studyproject.studyapp.models import Document
-from studyproject.studyapp.forms import DocForm
 
 
 # Create your views here.
@@ -59,22 +53,3 @@ def details1(request):
 
 def collaboration(request):
     return render(request, "collaboration.html")
-
-
-def list(request):
-    if request.method == 'POST':
-        form = DocForm(request.POST, request.FILES)
-    if form.is_valid():
-        new_doc = Document(doc_file = request.FILES['doc_file'])
-        new_doc.save()
-        return HttpResponseRedirect(reverse('studyapp.views.list'))
-    else:
-        form = DocForm()
-
-    docs = Document.objects.all()
-
-    # Render list page with the documents and the form
-    return render_to_response(
-        'studyapp/list.html',
-        {'documents': docs, 'form': form},
-        context_instance=RequestContext(request)
