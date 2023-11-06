@@ -23,15 +23,13 @@
     <hr>
         <h3>
         {% if assignment.completed %}
-            <s>{{ assignment.description }}</s>
+            <s>{{ assignment.course }}</s>
+            <s>{{ assignment.title }}</s>
         {% else %}
-            {{ assignment.description }}
+            {{ assignment.course }}
+            {{ assignment.title }}
         {% endif %}
         </h3>
-        <div>Due: {{assignment.dueDate}}</div>
-        {% if assignment.due_now %}
-        Due soon! Get it done!
-        {% endif %}
 {% endfor %}
 <hr>
 
