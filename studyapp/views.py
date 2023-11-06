@@ -16,19 +16,6 @@ def index(request):
     return render(request, 'index.html', {'form': form, 'assignments': assignments})
 
 
-@login_required
-@require_POST
-def create_assignment(request):
-    form = AssignmentForm(request.POST)
-    print('preparing to save')
-    if form.is_valid():
-        assignment = form.save(commit=False)
-        assignment.user = request.user
-        assignment.save()
-        print('saved')
-    return redirect('index')
-
-
 def assignment_s(request):
     myassignments = Assignment.objects.all().values()
     template = loader.get_template('index.html')
@@ -45,6 +32,19 @@ def details(request, id):
         'myassignment': myassignment,
     }
     return HttpResponse(template.render(context, request))
+
+
+@login_required
+@require_POST
+def create_assignment(request):
+    form = AssignmentForm(request.POST)
+    print('preparing to save')
+    if form.is_valid():
+        assignment = form.save(commit=False)
+        assignment.user = request.user
+        assignment.save()
+        print('saved')
+    return redirect('index')
 
 
 def details1(request):

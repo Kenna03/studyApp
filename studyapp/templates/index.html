@@ -23,13 +23,25 @@
         <a href="collaboration/">Collaboration</a>
     </nav>
 <h2>List of Assignments:</h2>
-<hr>
-
 <ul>
   {% for x in myassignments %}
     <li><a href="details/{{ x.id }}">{{ x.course }} {{ x.title }}</a></li>
   {% endfor %}
 </ul>
+
+<ul>
+   {% for assignment in assignments %}
+       <h3>
+       {% if assignment.completed %}
+           <s>{{ assignment.course }}</s>
+           <s>{{ assignment.title }}</s>
+       {% else %}
+           {{ assignment.course }}
+           {{ assignment.title }}
+       {% endif %}
+       </h3>
+     {% endfor %}
+   </ul>
 
 <hr>
 <form method="post" action="{% url 'create_assignment' %}">

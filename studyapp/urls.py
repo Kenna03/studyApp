@@ -1,6 +1,4 @@
 from django.urls import path
-# noinspection PyUnresolvedReferences
-from django.conf.urls import url
 from . import views
 
 
