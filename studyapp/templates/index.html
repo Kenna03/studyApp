@@ -24,11 +24,13 @@
     </nav>
 <h2>List of Assignments:</h2>
 <hr>
+
 <ul>
-    {% for x in myassignments %}
-        <li><a href="'details/'{{ x.id }}">{{ x.assignment.course }} {{ x.assignment.title }}</a></li>
-    {% endfor %}
+  {% for x in myassignments %}
+    <li><a href="details/{{ x.id }}">{{ x.course }} {{ x.title }}</a></li>
+  {% endfor %}
 </ul>
+
 <hr>
 <form method="post" action="{% url 'create_assignment' %}">
     {% csrf_token %}
